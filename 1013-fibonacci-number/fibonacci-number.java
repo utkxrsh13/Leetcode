@@ -5,7 +5,6 @@ class Solution {
         }
         int last = fib(N-1);
         int slast = fib(N-2);
-            
         return last + slast;
     }
 }
