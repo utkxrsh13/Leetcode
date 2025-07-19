@@ -1,8 +1,8 @@
 # Write your MySQL query statement below
 SELECT
-    p.product_name, s.year, s.price
+    Product.product_name, Sales.year, Sales.price
 FROM 
-    Sales s, 
-    Product p
+    Sales, 
+    Product
 WHERE
-    s.product_id = p.product_id
+    Sales.product_id = Product.product_id
