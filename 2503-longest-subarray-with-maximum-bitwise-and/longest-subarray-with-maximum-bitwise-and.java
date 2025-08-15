@@ -9,7 +9,6 @@ class Solution {
 
         int longest = 0;
         int currentLen = 0;
-        int currentAnd = -1;
 
         // Step 2: Traverse and simulate ANDs
         for (int num : nums) {
