@@ -10,44 +10,36 @@
  */
 class Solution {
     public ListNode sortList(ListNode head) {
-        if (head == null || head.next == null) return head;
-
-        // Step 1: Find middle
+        if(head == null || head.next == null) return head;
         ListNode slow = head, fast = head.next;
-        while (fast != null && fast.next != null) {
+        while(fast!=null && fast.next != null){
             slow = slow.next;
             fast = fast.next.next;
         }
 
-        // Step 2: Split into two halves
         ListNode mid = slow.next;
         slow.next = null;
 
-        // Step 3: Sort each half
         ListNode left = sortList(head);
         ListNode right = sortList(mid);
 
-        // Step 4: Merge
         return merge(left, right);
     }
-
-    private ListNode merge(ListNode l1, ListNode l2) {
+    private ListNode merge(ListNode l, ListNode r){
         ListNode dummy = new ListNode(0);
         ListNode tail = dummy;
 
-        while (l1 != null && l2 != null) {
-            if (l1.val < l2.val) {
-                tail.next = l1;
-                l1 = l1.next;
-            } else {
-                tail.next = l2;
-                l2 = l2.next;
+        while(l!=null && r!=null){
+            if(l.val<r.val){
+                tail.next = l;
+                l = l.next;
+            }else{
+                tail.next = r;
+                r = r.next;
             }
             tail = tail.next;
         }
-
-        // Attach the remaining nodes
-        tail.next = (l1 != null) ? l1 : l2;
+        tail.next = (l!=null)?l:r;
         return dummy.next;
     }
 }
