@@ -1,0 +1,20 @@
+class Solution {
+    public int bestClosingTime(String customers) {
+        int penalty = 0;
+        int best = 0,ans = 0;
+        char[] ch = customers.toCharArray();
+        
+        for(int i =0;i<customers.length();i++){
+            if(ch[i] == 'Y'){
+                penalty--;
+                if(penalty < best){
+                    best = penalty;
+                    ans = i+1;
+                }
+            }else{
+                penalty++;
+            }
+        }
+        return ans;
+    }
+}
